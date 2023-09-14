@@ -46,6 +46,9 @@ public class Main {
                 if ((result - 50) >= 0) {
                     sb.append("L");
                     result = result - 50;
+                } if ((result < 50 & result >= 40)) {
+                    sb.append("XL");
+                    result = result - 40;
                 }
                 while (((result - 10) >= 0)) {
                     sb.append("X");
