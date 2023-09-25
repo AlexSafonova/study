@@ -13,11 +13,10 @@ public class Main {
         int finalResult = 0;
 
         if (expressionArray.length != 3) {
-            System.out.println("throws Exception");
-            System.exit(0);
+            throw new ArithmeticException("Неверный формат выражения");
         }
         class ResultOfExpression {
-            public static int resultOfExpression(int x, char sym, int y) {
+            public static int resultOfExpression (int x, char sym, int y) {
                 int result = 0;
                 switch (sym) {
                     case '+':
@@ -33,8 +32,7 @@ public class Main {
                         result = x / y;
                         break;
                     default:
-                        System.out.println("throws Exception");
-                        System.exit(0);
+                        throw new ArithmeticException("Неверный арифметический знак");
                 }
                 return result;
             }
@@ -68,6 +66,7 @@ public class Main {
         String[] arab = {"10", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         String[] rome = {"X", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
         int check = 1;
+        int check2 = 1;
         for (int i = 0; i < 10; i++) {
 
             if (expressionArray[0].equals(rome[i])) {
@@ -77,8 +76,7 @@ public class Main {
                         b = Integer.parseInt(arab[j]);
                         int result2 = result.resultOfExpression(a, symbol, b);
                         if (result2 <=0) {
-                            System.out.println("throws Exception");
-                            System.exit(0);
+                            throw new ArithmeticException("Такого римского числа не существует");
                         }
                         ResultOfExpression middlresult = new ResultOfExpression();
                         String finalResult2 = middlresult.resultOfExpressionRome(result2);
@@ -87,7 +85,7 @@ public class Main {
                     } else check++;
 
                 }
-            }
+            } else check2++;
         }
         for (int i = 0; i < 10; i++) {
             if (expressionArray[0].equals(arab[i])) {
@@ -100,11 +98,10 @@ public class Main {
                         break;
                     } else check++;
                 }
-            }
+            } else check2++;
         }
-        if (check == 11) {
-            System.out.println("throws Exception");
-            System.exit(0);
+        if ((check2 == 21) | (check == 11)) {
+            throw new ArithmeticException("Числа должны быть указанного формата");
         }
     }
 }
